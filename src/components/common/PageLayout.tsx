@@ -6,11 +6,13 @@ type Props = {
   children: React.ReactChild;
 };
 
-export const CommonLayout = ({ children }: Props) => {
+export const PageLayout = ({ children }: Props) => {
   return <Container>{children}</Container>;
 };
 
 const Container = styled.div`
   background-color: ${themeColor.bg.lightBlack};
   display: flex;
+  height: 100vh;
+  width: 100vw;
 `;
