@@ -1,4 +1,5 @@
 export const themeColor = {
+  transparent: 'transparent',
   primary: '#00C896',
   gray: '#7D7D7D',
   white: '#ffffff',

@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 import { themeColor } from '@constants/themeColor';
 import { DifficultyItem } from './item/DifficultyItem';
-import { AnswerButtonContainer } from './item/AnswerButtonContainer';
+import { AnswerForm } from './item/AnswerForm';
 
 export const QuestionItem = () => {
   return (
@@ -20,7 +20,7 @@ export const QuestionItem = () => {
       <InformationContainer>
         <DifficultyItem />
       </InformationContainer>
-      <AnswerButtonContainer />
+      <AnswerForm />
     </ContainerLayout>
   );
 };
