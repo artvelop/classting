@@ -3,6 +3,7 @@
     "target": "es5",
     "baseUrl": "./src",
     "paths": {
+      "@apis/*": ["apis/*"],
       "@apps/*": ["apps/*"],
       "@pages/*": ["pages/*"],
       "@libs/*": ["libs/*"],
