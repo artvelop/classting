@@ -3,12 +3,13 @@
     "target": "es5",
     "baseUrl": "./src",
     "paths": {
+      "@apps/*": ["apps/*"],
       "@pages/*": ["pages/*"],
       "@libs/*": ["libs/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@recoil/*": ["recoil/*"],
-      "@type/*": ["type/*"],
+      "@types/*": ["types/*"],
       "@src/*": ["./*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
