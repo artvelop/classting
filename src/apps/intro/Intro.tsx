@@ -1,10 +1,16 @@
+import React from 'react';
+import styled from '@emotion/styled';
 import { PageLayout } from '@components/PageLayout';
 import { themeColor } from '@constants/themeColor';
-import styled from '@emotion/styled';
 import { Button, Typography } from '@mui/material';
-import React from 'react';
+import { useIntro } from './Intro.hook';
+import { MessageModal } from '@components/MessageModal';
+import { GiArchiveRegister } from 'react-icons/gi';
 
 export const Intro = () => {
+  const { playModalVisible, setPlayModalVisible, handleClickPlayQuiz } =
+    useIntro();
+
   return (
     <PageLayout>
       <Container>
@@ -15,10 +21,20 @@ export const Intro = () => {
           </Title>
         </TitleWrapper>
         <ButtonWrapper>
-          <PlayButton fullWidth variant="contained">
+          <PlayButton
+            onClick={handleClickPlayQuiz}
+            fullWidth
+            variant="contained">
             퀴즈 풀기
           </PlayButton>
         </ButtonWrapper>
+        <MessageModal
+          visible={playModalVisible}
+          setVisible={setPlayModalVisible}
+          cancleButtonVisible={true}
+          description="퀴즈는 4지선다형으로 구성되며 총 10문제 입니다"
+          icon={<GiArchiveRegister size="128" color={themeColor.gray} />}
+        />
       </Container>
     </PageLayout>
   );

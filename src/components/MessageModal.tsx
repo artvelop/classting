@@ -14,19 +14,23 @@ export type Props = {
 };
 
 export const MessageModal = (props: Props) => {
-  const { visible, handleClose } = useMessageModal(props);
+  const { visible, handleClose, handleConfirmClick } = useMessageModal(props);
 
   return (
     <Modal open={visible} onClose={handleClose}>
       <Container>
         <IconWrapper>{props.icon}</IconWrapper>
-        <ContentWrapper>
-          <Typography color={themeColor.gray}>{props.description}</Typography>
-        </ContentWrapper>
+        <DescriptionWrapper>
+          <Description variant="h6" color={themeColor.gray} align="center">
+            {props.description}
+          </Description>
+        </DescriptionWrapper>
         <ButtonWrapper>
-          <ConfirmButton>네 알겠습니다</ConfirmButton>
+          <ConfirmButton onClick={handleConfirmClick}>
+            네 알겠습니다
+          </ConfirmButton>
           {props.cancleButtonVisible && (
-            <CancelButton>다시 돌아갈래요</CancelButton>
+            <CancelButton onClick={handleClose}>다시 돌아갈래요</CancelButton>
           )}
         </ButtonWrapper>
       </Container>
@@ -43,6 +47,9 @@ const Container = styled.div`
   background-color: ${themeColor.white};
   border-radius: 4px;
   padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const IconWrapper = styled.div`
@@ -50,9 +57,20 @@ const IconWrapper = styled.div`
   margin-right: auto;
 `;
 
-const ContentWrapper = styled.div``;
+const DescriptionWrapper = styled.div`
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-bottom: 16px;
+`;
 
-const ButtonWrapper = styled.div``;
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Description = styled(Typography)`
+  word-break: keep-all;
+`;
 
 const ConfirmButton = styled(Button)`
   background-color: ${themeColor.primary};
@@ -65,10 +83,10 @@ const ConfirmButton = styled(Button)`
 
 const CancelButton = styled(Button)`
   background-color: ${themeColor.gray};
-  color: ${themeColor.black};
+  color: ${themeColor.white};
   margin-top: 8px;
   &.MuiButton-containedPrimary {
-    background-color: ${themeColor.primary};
-    color: ${themeColor.black};
+    background-color: ${themeColor.gray};
+    color: ${themeColor.white};
   }
 `;
