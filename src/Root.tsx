@@ -1,6 +1,6 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Intro } from '@pages/Intro';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 const Root = () => {
   return (

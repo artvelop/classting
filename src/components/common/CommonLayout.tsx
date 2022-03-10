@@ -1,3 +1,5 @@
+import { themeColor } from '@constants/themeColor';
+import styled from '@emotion/styled';
 import React from 'react';
 
 type Props = {
@@ -5,5 +7,10 @@ type Props = {
 };
 
 export const CommonLayout = ({ children }: Props) => {
-  return <div>{children}</div>;
+  return <Container>{children}</Container>;
 };
+
+const Container = styled.div`
+  background-color: ${themeColor.bg.lightBlack};
+  display: flex;
+`;

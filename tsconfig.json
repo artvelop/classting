@@ -25,6 +25,6 @@
     "jsx": "preserve",
     "downlevelIteration": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "craco.config.ts"],
   "exclude": ["node_modules"]
 }
