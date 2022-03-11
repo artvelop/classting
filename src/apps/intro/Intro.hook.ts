@@ -6,6 +6,7 @@ import { Answer, QuestionItemType } from '@type/question.type';
 import { getRandomNumber } from '@libs/getRandomNumber';
 import { useSetRecoilState } from 'recoil';
 import { questionList } from '@recoil/atom/questionList';
+import { useNavigate } from 'react-router-dom';
 
 const MUSIC_CATEGORY = 12;
 
@@ -23,6 +24,8 @@ type QuestionListResponse = {
 export const useIntro = () => {
   const [playModalVisible, setPlayModalVisible] = useState(false);
   const setQuestionList = useSetRecoilState(questionList);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setQuestionList([]);
@@ -75,6 +78,7 @@ export const useIntro = () => {
     );
 
     setQuestionList(list);
+    navigate('/action/play');
   };
 
   return {
