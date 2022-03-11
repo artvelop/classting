@@ -8,8 +8,12 @@ import { MessageModal } from '@components/MessageModal';
 import { GiArchiveRegister } from 'react-icons/gi';
 
 export const Intro = () => {
-  const { playModalVisible, setPlayModalVisible, handleClickPlayQuiz } =
-    useIntro();
+  const {
+    playModalVisible,
+    setPlayModalVisible,
+    handleClickPlayQuiz,
+    handlePlayModalCofirm,
+  } = useIntro();
 
   return (
     <PageLayout>
@@ -31,6 +35,7 @@ export const Intro = () => {
         <MessageModal
           visible={playModalVisible}
           setVisible={setPlayModalVisible}
+          onClickConfirm={handlePlayModalCofirm}
           cancleButtonVisible={true}
           description="퀴즈는 4지선다형으로 구성되며 총 10문제 입니다"
           icon={<GiArchiveRegister size="128" color={themeColor.gray} />}

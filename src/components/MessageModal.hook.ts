@@ -3,12 +3,12 @@ import { Props } from './MessageModal';
 export const useMessageModal = ({
   visible,
   setVisible,
-  confirmOnClick,
+  onClickConfirm,
 }: Props) => {
   const handleClose = () => setVisible(false);
   const handleConfirmClick = async () => {
-    if (confirmOnClick) {
-      await confirmOnClick();
+    if (onClickConfirm) {
+      await onClickConfirm();
     }
     setVisible(false);
   };

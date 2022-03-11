@@ -10,7 +10,7 @@
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@recoil/*": ["recoil/*"],
-      "@types/*": ["types/*"],
+      "@type/*": ["type/*"],
       "@src/*": ["./*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],

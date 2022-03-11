@@ -9,7 +9,7 @@ export type Props = {
   setVisible: (visible: boolean) => void;
   icon: React.ReactChild;
   description: string;
-  confirmOnClick?: () => void;
+  onClickConfirm?: () => void;
   cancleButtonVisible: boolean;
 };
 
