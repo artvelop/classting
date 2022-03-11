@@ -29,7 +29,7 @@ export const useIntro = () => {
 
   useEffect(() => {
     setQuestionList([]);
-  });
+  }, []);
 
   const difficultyToNumber = (input: 'easy' | 'medium' | 'hard') => {
     switch (input) {
