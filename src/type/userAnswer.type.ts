@@ -1,8 +1,6 @@
 import { Answer } from './question.type';
 
 export type UserAnswerType = {
-  id: string;
-  question: string;
+  questionId: string;
   userAnswer: Answer;
-  correctAnswer: Answer;
 };

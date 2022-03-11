@@ -2,25 +2,31 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 import { themeColor } from '@constants/themeColor';
-import { DifficultyItem } from './item/DifficultyItem';
+import { DifficultyItem } from '@components/DifficultyItem';
 import { AnswerForm } from './item/AnswerForm';
+import { QuestionItemType } from '@type/question.type';
 
-export const QuestionItem = () => {
+type Props = {
+  item: QuestionItemType;
+  sequence: number;
+  onClickNextStep: () => void;
+};
+
+export const QuestionItem = ({ item, sequence, onClickNextStep }: Props) => {
   return (
     <ContainerLayout>
       <QuestionContainer>
         <QuestionNumber variant="h3" color={themeColor.white}>
-          Q1
+          Q{sequence}
         </QuestionNumber>
         <Question variant="h5" color={themeColor.white}>
-          Which of the following guitarists recorded an album as a member of the
-          Red Hot Chili Peppers?
+          {item.question}
         </Question>
       </QuestionContainer>
       <InformationContainer>
-        <DifficultyItem />
+        <DifficultyItem level={item.difficulty} />
       </InformationContainer>
-      <AnswerForm />
+      <AnswerForm item={item} onClickNextStep={onClickNextStep} />
     </ContainerLayout>
   );
 };
@@ -28,6 +34,8 @@ export const QuestionItem = () => {
 const ContainerLayout = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  width: 100vw;
 `;
 
 const InformationContainer = styled.div`

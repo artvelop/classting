@@ -3,65 +3,45 @@ import styled from '@emotion/styled';
 import { themeColor } from '@constants/themeColor';
 import { Button, Typography } from '@mui/material';
 import { useAnswerForm } from './AnswerForm.hook';
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
+import { QuestionItemType } from '@type/question.type';
+import { AnswerButton } from './AnswerButton';
 
-const answerColor = {
+export const answerColor = {
   correct: '#00C896',
   wrong: '#F56C73',
 } as const;
 
-export const AnswerForm = () => {
-  const { buttonDisable, handleClickAnswerButton } = useAnswerForm();
+type Props = {
+  onClickNextStep: () => void;
+  item: QuestionItemType;
+};
+
+export const AnswerForm = ({ item, onClickNextStep }: Props) => {
+  const { buttonDisable, handleClickUserAnswer, correctStatus } =
+    useAnswerForm();
 
   return (
     <Container>
-      <ResultContainer>
-        <Typography variant="body2" color={answerColor.correct}>
-          정답 😀
-        </Typography>
-        <NextButton>NEXT</NextButton>
-      </ResultContainer>
+      {buttonDisable && (
+        <ResultContainer>
+          <Typography
+            variant="body2"
+            color={correctStatus ? answerColor.correct : answerColor.wrong}>
+            {correctStatus ? '정답 😀' : '오답 😢'}
+          </Typography>
+          <NextButton onClick={onClickNextStep}>NEXT</NextButton>
+        </ResultContainer>
+      )}
       <ButtonContainer>
-        <AnswerButton
-          fullWidth
-          variant="contained"
-          disabled={buttonDisable}
-          onClick={handleClickAnswerButton}>
-          <div>Dave Navarro</div>
-          {buttonDisable && (
-            <AiOutlineCheckCircle size="20" color={answerColor.correct} />
-          )}
-        </AnswerButton>
-        <AnswerButton
-          fullWidth
-          variant="contained"
-          disabled={buttonDisable}
-          onClick={handleClickAnswerButton}>
-          <div>Tom Morello</div>
-          {buttonDisable && (
-            <AiOutlineCloseCircle size="20" color={answerColor.wrong} />
-          )}
-        </AnswerButton>
-        <AnswerButton
-          fullWidth
-          variant="contained"
-          disabled={buttonDisable}
-          onClick={handleClickAnswerButton}>
-          <div>Billy Corgan</div>
-          {buttonDisable && (
-            <AiOutlineCloseCircle size="20" color={answerColor.wrong} />
-          )}
-        </AnswerButton>
-        <AnswerButton
-          fullWidth
-          variant="contained"
-          disabled={buttonDisable}
-          onClick={handleClickAnswerButton}>
-          <div>Ed O&#039;Brien</div>
-          {buttonDisable && (
-            <AiOutlineCloseCircle size="20" color={answerColor.wrong} />
-          )}
-        </AnswerButton>
+        {item.answerList.map((answerItem) => (
+          <AnswerButton
+            key={answerItem.id}
+            buttonDisable={buttonDisable}
+            handleClickUserAnswer={handleClickUserAnswer}
+            answerItem={answerItem}
+            questionId={item.id}
+          />
+        ))}
       </ButtonContainer>
     </Container>
   );
@@ -86,20 +66,20 @@ const ButtonContainer = styled.div`
   margin-right: 16px;
 `;
 
-const AnswerButton = styled(Button)`
-  margin-top: 8px;
-  background-color: ${themeColor.primary};
-  border: 1px solid ${themeColor.primary};
-  color: ${themeColor.white};
-  text-transform: none;
-  &.Mui-disabled {
-    background-color: ${themeColor.transparent};
-    border: 1px solid ${themeColor.primary};
-    color: ${themeColor.white};
-    justify-content: space-between;
-    text-transform: none;
-  }
-`;
+// const AnswerButton = styled(Button)`
+//   margin-top: 8px;
+//   background-color: ${themeColor.primary};
+//   border: 1px solid ${themeColor.primary};
+//   color: ${themeColor.white};
+//   text-transform: none;
+//   &.Mui-disabled {
+//     background-color: ${themeColor.transparent};
+//     border: 1px solid ${themeColor.primary};
+//     color: ${themeColor.white};
+//     justify-content: space-between;
+//     text-transform: none;
+//   }
+// `;
 
 const NextButton = styled(Button)`
   color: ${themeColor.white};
