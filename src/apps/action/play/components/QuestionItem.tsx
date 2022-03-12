@@ -35,7 +35,7 @@ const ContainerLayout = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 `;
 
 const InformationContainer = styled.div`

@@ -26,7 +26,7 @@ export const QuestionItemSlider = () => {
 };
 
 const Container = styled.div`
-  max-height: 100vh;
-  max-width: 100vw;
+  max-height: 100%;
+  max-width: 100%;
 `;
 const SliderWrapper = styled.div``;
