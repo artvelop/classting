@@ -6,7 +6,7 @@
       "@apis/*": ["apis/*"],
       "@apps/*": ["apps/*"],
       "@pages/*": ["pages/*"],
-      "@libs/*": ["libs/*"],
+      "@utils/*": ["utils/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@recoil/*": ["recoil/*"],

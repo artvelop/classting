@@ -1,6 +1,6 @@
 import { themeColor } from '@constants/themeColor';
 import styled from '@emotion/styled';
-import { breakPoints } from '@libs/breakpoints';
+import { breakPoints } from '@src/utils/breakpoints';
 import React from 'react';
 
 type Props = {

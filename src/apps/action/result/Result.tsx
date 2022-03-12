@@ -6,6 +6,7 @@ import { themeColor } from '@constants/themeColor';
 import { Pie } from 'react-chartjs-2';
 import { ChartData } from 'chart.js';
 import { NoteItem } from './components/NoteItem';
+import { DurationTimeItem } from './components/DurationTimeItem';
 
 const answerColor = {
   correct: '#00C896',
@@ -38,6 +39,9 @@ export const Result = () => {
           <Chart>
             <Pie data={data} />
           </Chart>
+          <Duration>
+            <DurationTimeItem />
+          </Duration>
           <Action>
             <ActionButton fullWidth>다시 풀기</ActionButton>
             <ActionButton fullWidth>홈으로</ActionButton>
@@ -69,6 +73,11 @@ const TitleContainer = styled.div`
   margin-bottom: 16px;
 `;
 
+const Duration = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const ResultContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -80,7 +89,7 @@ const NoteContainer = styled.div`
 `;
 
 const Chart = styled.div`
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   margin-left: auto;
   margin-right: auto;
   width: 248px;

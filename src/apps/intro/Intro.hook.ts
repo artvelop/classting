@@ -3,7 +3,7 @@ import { AxiosResponse } from 'axios';
 import { v4 as generateUUID } from 'uuid';
 import { questionApi } from '@apis/question.api';
 import { Answer, QuestionItemType } from '@type/question.type';
-import { getRandomNumber } from '@libs/getRandomNumber';
+import { getRandomNumber } from '@src/utils/getRandomNumber';
 import { useSetRecoilState } from 'recoil';
 import { questionList } from '@recoil/atom/questionList';
 import { useNavigate } from 'react-router-dom';
