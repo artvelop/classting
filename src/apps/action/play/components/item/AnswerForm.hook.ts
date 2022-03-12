@@ -1,19 +1,29 @@
 import { userAnswerList } from '@recoil/atom/userAnswerList';
-import { Answer } from '@type/question.type';
+import { Answer, QuestionItemType } from '@type/question.type';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
-export const useAnswerForm = () => {
+type Params = {
+  item: QuestionItemType;
+};
+
+export const useAnswerForm = ({ item }: Params) => {
   const [buttonDisable, setButtonDisable] = useState(false);
   const [correctStatus, setCorrectStatus] = useState(false);
   const setUserAnswerList = useSetRecoilState(userAnswerList);
 
   const handleClickUserAnswer = (questionId: string, answerItem: Answer) => {
+    const [correctAnswer] = item.answerList.filter(
+      ({ correctStatus }) => correctStatus,
+    );
+
     setUserAnswerList((cur) => [
       ...cur,
       {
         questionId,
+        question: item.question,
         userAnswer: answerItem,
+        correctAnswer,
       },
     ]);
 

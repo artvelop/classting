@@ -17,8 +17,9 @@ type Props = {
 };
 
 export const AnswerForm = ({ item, onClickNextStep }: Props) => {
-  const { buttonDisable, handleClickUserAnswer, correctStatus } =
-    useAnswerForm();
+  const { buttonDisable, handleClickUserAnswer, correctStatus } = useAnswerForm(
+    { item },
+  );
 
   return (
     <Container>
