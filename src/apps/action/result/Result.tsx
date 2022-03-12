@@ -3,30 +3,14 @@ import { PageLayout } from '@components/PageLayout';
 import styled from '@emotion/styled';
 import { Button, Typography } from '@mui/material';
 import { themeColor } from '@constants/themeColor';
-import { Pie } from 'react-chartjs-2';
-import { ChartData } from 'chart.js';
 import { DurationTimeItem } from './components/DurationTimeItem';
 import { NoteItemList } from './components/NoteItemList';
-
-const answerColor = {
-  correct: '#00C896',
-  wrong: '#F56C73',
-} as const;
-
-const data: ChartData<'pie', unknown, unknown> = {
-  labels: ['정답', '오답'],
-  datasets: [
-    {
-      label: '풀이 결과',
-      data: [7, 3],
-      backgroundColor: [answerColor.correct, answerColor.wrong],
-      borderColor: [answerColor.correct, answerColor.wrong],
-      borderWidth: 1,
-    },
-  ],
-};
+import { ResultChartItem } from './components/ResultChartItem';
+import { useResult } from './Result.hook';
 
 export const Result = () => {
+  const { handleAgainAnswerToQuestion, handleGoHome } = useResult();
+
   return (
     <PageLayout>
       <Container>
@@ -37,14 +21,18 @@ export const Result = () => {
         </TitleContainer>
         <ResultContainer>
           <Chart>
-            <Pie data={data} />
+            <ResultChartItem />
           </Chart>
           <Duration>
             <DurationTimeItem />
           </Duration>
           <Action>
-            <ActionButton fullWidth>다시 풀기</ActionButton>
-            <ActionButton fullWidth>홈으로</ActionButton>
+            <ActionButton onClick={handleAgainAnswerToQuestion} fullWidth>
+              다시 풀기
+            </ActionButton>
+            <ActionButton onClick={handleGoHome} fullWidth>
+              홈으로
+            </ActionButton>
           </Action>
         </ResultContainer>
         <NoteContainer>
