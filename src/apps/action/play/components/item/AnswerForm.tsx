@@ -67,21 +67,6 @@ const ButtonContainer = styled.div`
   margin-right: 16px;
 `;
 
-// const AnswerButton = styled(Button)`
-//   margin-top: 8px;
-//   background-color: ${themeColor.primary};
-//   border: 1px solid ${themeColor.primary};
-//   color: ${themeColor.white};
-//   text-transform: none;
-//   &.Mui-disabled {
-//     background-color: ${themeColor.transparent};
-//     border: 1px solid ${themeColor.primary};
-//     color: ${themeColor.white};
-//     justify-content: space-between;
-//     text-transform: none;
-//   }
-// `;
-
 const NextButton = styled(Button)`
   color: ${themeColor.white};
   padding-top: 4px;

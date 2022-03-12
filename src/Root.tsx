@@ -5,6 +5,9 @@ import { SelectScreen } from '@pages/action/SelectScreen';
 import { PlayScreen } from '@pages/action/PlayScreen';
 import { ResultScreen } from '@pages/action/ResultScreen';
 import { RecoilRoot } from 'recoil';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const Root = () => {
   return (
