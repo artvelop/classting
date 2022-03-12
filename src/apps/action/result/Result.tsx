@@ -7,6 +7,7 @@ import { Pie } from 'react-chartjs-2';
 import { ChartData } from 'chart.js';
 import { NoteItem } from './components/NoteItem';
 import { DurationTimeItem } from './components/DurationTimeItem';
+import { NoteItemList } from './components/NoteItemList';
 
 const answerColor = {
   correct: '#00C896',
@@ -53,9 +54,7 @@ export const Result = () => {
               오답 노트
             </Typography>
           </TitleContainer>
-          <NoteItem />
-          <NoteItem />
-          <NoteItem />
+          <NoteItemList />
         </NoteContainer>
       </Container>
     </PageLayout>

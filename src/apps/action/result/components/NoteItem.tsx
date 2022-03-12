@@ -3,11 +3,12 @@ import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 import React from 'react';
 
-const question =
-  'What 1970&#039;s American ballad referred to the 1959 plane crash as the &quot;the day the music died&quot;?';
-const correctAnswer = 'American Pie';
+type Props = {
+  question: string;
+  answer: string;
+};
 
-export const NoteItem = () => {
+export const NoteItem = ({ question, answer }: Props) => {
   return (
     <Container>
       <QuestionContainer>
@@ -15,7 +16,7 @@ export const NoteItem = () => {
       </QuestionContainer>
       <AnswerContainer>
         <AnswerTypography color={themeColor.primary}>
-          정답: <span>{correctAnswer}</span>
+          정답: <span>{answer}</span>
         </AnswerTypography>
       </AnswerContainer>
     </Container>
