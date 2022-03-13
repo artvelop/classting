@@ -44,41 +44,47 @@ export const useIntro = () => {
 
   const handleClickPlayQuiz = () => setPlayModalVisible(true);
   const handlePlayModalCofirm = async () => {
-    const {
-      data: { results },
-    }: AxiosResponse<QuestionListResponse> = await questionApi.list({
-      amount: 10,
-      category: MUSIC_CATEGORY,
-      type: 'multiple',
-    });
+    try {
+      const {
+        data: { results },
+      }: AxiosResponse<QuestionListResponse> = await questionApi.list({
+        amount: 10,
+        category: MUSIC_CATEGORY,
+        type: 'multiple',
+      });
 
-    const list: Array<QuestionItemType> = results.map(
-      ({ correct_answer, difficulty, question, incorrect_answers }) => {
-        const correctAnswer: Answer = {
-          id: generateUUID(),
-          content: correct_answer,
-          correctStatus: true,
-        };
+      const list: Array<QuestionItemType> = results.map(
+        ({ correct_answer, difficulty, question, incorrect_answers }) => {
+          const correctAnswer: Answer = {
+            id: generateUUID(),
+            content: correct_answer,
+            correctStatus: true,
+          };
 
-        const answerList: Array<Answer> = incorrect_answers.map((content) => ({
-          id: generateUUID(),
-          content,
-          correctStatus: false,
-        }));
+          const answerList: Array<Answer> = incorrect_answers.map(
+            (content) => ({
+              id: generateUUID(),
+              content,
+              correctStatus: false,
+            }),
+          );
 
-        answerList.splice(getRandomNumber(0, 3), 0, correctAnswer);
+          answerList.splice(getRandomNumber(0, 3), 0, correctAnswer);
 
-        return {
-          id: generateUUID(),
-          difficulty: difficultyToNumber(difficulty),
-          question: question,
-          answerList,
-        };
-      },
-    );
+          return {
+            id: generateUUID(),
+            difficulty: difficultyToNumber(difficulty),
+            question: question,
+            answerList,
+          };
+        },
+      );
 
-    setQuestionList(list);
-    navigate('/action/play');
+      setQuestionList(list);
+      navigate('/action/play');
+    } catch (e) {
+      alert('알 수 없는 오류로 실패하였습니다');
+    }
   };
 
   return {

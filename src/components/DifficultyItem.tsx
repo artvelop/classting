@@ -4,6 +4,10 @@ import { themeColor } from '@constants/themeColor';
 import { Typography } from '@mui/material';
 import { useDifficultyItem } from './DifficultyItem.hook';
 
+// TestCase
+// 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
+// 2. 데이터에 따라 텍스트가 올바르게 표기되는지 확인
+
 type Props = {
   level: number;
 };

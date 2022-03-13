@@ -6,9 +6,9 @@ export const useMessageModal = ({
   onClickConfirm,
 }: Props) => {
   const handleClose = () => setVisible(false);
-  const handleConfirmClick = async () => {
+  const handleConfirmClick = () => {
     if (onClickConfirm) {
-      await onClickConfirm();
+      onClickConfirm();
     }
     setVisible(false);
   };

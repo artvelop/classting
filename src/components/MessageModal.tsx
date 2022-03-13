@@ -4,6 +4,11 @@ import { useMessageModal } from './MessageModal.hook';
 import styled from '@emotion/styled';
 import { themeColor } from '@constants/themeColor';
 
+// TestCase
+// 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
+// 2. 메세지 모달이 root div 바깥으로 나오는지 확인
+// 3. 불필요한 로직이 있는지 확인
+
 export type Props = {
   visible: boolean;
   setVisible: (visible: boolean) => void;
