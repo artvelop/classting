@@ -1,11 +1,7 @@
 import { userAnswerList as userRecoilAnswerList } from '@recoil/atom/userAnswerList';
 import { useRecoilValue } from 'recoil';
 import { ChartData } from 'chart.js';
-
-const answerColor = {
-  correct: '#00C896',
-  wrong: '#F56C73',
-} as const;
+import { answerColor } from '@constants/answerColor';
 
 export const useResultChart = () => {
   const userAnswerList = useRecoilValue(userRecoilAnswerList);

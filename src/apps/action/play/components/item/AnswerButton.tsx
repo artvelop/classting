@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from 'react-icons/ai';
 import { Answer } from '@type/question.type';
 import { useAnswerButton } from './AnswerButton.hook';
-import { answerColor } from './AnswerForm';
+import { answerColor } from '@constants/answerColor';
 
 type Props = {
   buttonDisable: boolean;

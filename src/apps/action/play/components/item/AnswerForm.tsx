@@ -5,11 +5,7 @@ import { Button, Typography } from '@mui/material';
 import { useAnswerForm } from './AnswerForm.hook';
 import { QuestionItemType } from '@type/question.type';
 import { AnswerButton } from './AnswerButton';
-
-export const answerColor = {
-  correct: '#00C896',
-  wrong: '#F56C73',
-} as const;
+import { answerColor } from '@constants/answerColor';
 
 type Props = {
   onClickNextStep: () => void;
