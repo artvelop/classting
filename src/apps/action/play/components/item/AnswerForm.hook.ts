@@ -1,6 +1,7 @@
+import { answerColor } from '@constants/answerColor';
 import { userAnswerList } from '@recoil/atom/userAnswerList';
 import { Answer, QuestionItemType } from '@type/question.type';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 
 type Params = {
@@ -12,29 +13,43 @@ export const useAnswerForm = ({ item }: Params) => {
   const [correctStatus, setCorrectStatus] = useState(false);
   const setUserAnswerList = useSetRecoilState(userAnswerList);
 
-  const handleClickUserAnswer = (questionId: string, answerItem: Answer) => {
-    const [correctAnswer] = item.answerList.filter(
-      ({ correctStatus }) => correctStatus,
-    );
+  const getCorrectStatusResult = useMemo(
+    () => (correctStatus ? '정답 😀' : '오답 😢'),
+    [correctStatus],
+  );
 
-    setUserAnswerList((cur) => [
-      ...cur,
-      {
-        questionId,
-        question: item.question,
-        userAnswer: answerItem,
-        correctAnswer,
-      },
-    ]);
+  const getCorrectStatusColor = useMemo(
+    () => (correctStatus ? answerColor.correct : answerColor.wrong),
+    [correctStatus],
+  );
 
-    setCorrectStatus(answerItem.correctStatus);
+  const handleClickUserAnswer = useCallback(
+    (questionId: string, answerItem: Answer) => {
+      const [correctAnswer] = item.answerList.filter(
+        ({ correctStatus }) => correctStatus,
+      );
 
-    setButtonDisable((cur) => !cur);
-  };
+      setUserAnswerList((cur) => [
+        ...cur,
+        {
+          questionId,
+          question: item.question,
+          userAnswer: answerItem,
+          correctAnswer,
+        },
+      ]);
+
+      setCorrectStatus(answerItem.correctStatus);
+
+      setButtonDisable((cur) => !cur);
+    },
+    [item, correctStatus, buttonDisable],
+  );
 
   return {
     buttonDisable,
     handleClickUserAnswer,
-    correctStatus,
+    getCorrectStatusResult,
+    getCorrectStatusColor,
   };
 };

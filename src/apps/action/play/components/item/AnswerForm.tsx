@@ -5,13 +5,13 @@ import { Button, Typography } from '@mui/material';
 import { useAnswerForm } from './AnswerForm.hook';
 import { QuestionItemType } from '@type/question.type';
 import { AnswerButton } from './AnswerButton';
-import { answerColor } from '@constants/answerColor';
 
 // TestCase
 // 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
 // 2. AnswerButton 클릭시 데이터가 Type에 맞게 올바르게 담기는지 확인
 // 3. AnswerButton을 클릭 후에 결과화면이 올바르게 나타나는지 확인
 // 4. Next버튼 작동여부 확인
+// 5. 렌더링 최적화 이후 deps에 들어갈 값들이 알맞은 값인지 확인
 
 type Props = {
   onClickNextStep: () => void;
@@ -19,18 +19,19 @@ type Props = {
 };
 
 export const AnswerForm = ({ item, onClickNextStep }: Props) => {
-  const { buttonDisable, handleClickUserAnswer, correctStatus } = useAnswerForm(
-    { item },
-  );
+  const {
+    buttonDisable,
+    handleClickUserAnswer,
+    getCorrectStatusResult,
+    getCorrectStatusColor,
+  } = useAnswerForm({ item });
 
   return (
     <Container>
       {buttonDisable && (
         <ResultContainer>
-          <Typography
-            variant="body2"
-            color={correctStatus ? answerColor.correct : answerColor.wrong}>
-            {correctStatus ? '정답 😀' : '오답 😢'}
+          <Typography variant="body2" color={getCorrectStatusColor}>
+            {getCorrectStatusResult}
           </Typography>
           <NextButton onClick={onClickNextStep}>NEXT</NextButton>
         </ResultContainer>

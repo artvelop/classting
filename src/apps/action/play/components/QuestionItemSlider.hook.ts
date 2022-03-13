@@ -3,6 +3,7 @@ import { questionList } from '@recoil/atom/questionList';
 import { useKeenSlider } from 'keen-slider/react';
 import { userAnswerList } from '@recoil/atom/userAnswerList';
 import { useNavigate } from 'react-router-dom';
+import { useCallback } from 'react';
 
 export const useQuestionItemSlider = () => {
   const questionItemList = useRecoilValue(questionList);
@@ -10,11 +11,11 @@ export const useQuestionItemSlider = () => {
   const [slideRef, instanceRef] = useKeenSlider({ drag: false });
   const navigate = useNavigate();
 
-  const handleNextStep = () => {
+  const handleNextStep = useCallback(() => {
     userAnswerItemList.length === questionItemList.length
       ? navigate('/action/result')
       : instanceRef.current?.next();
-  };
+  }, [userAnswerItemList, questionItemList]);
 
   return {
     questionItemList,
