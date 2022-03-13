@@ -3,6 +3,11 @@ import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 import React from 'react';
 
+// TestCase
+// 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
+// 2. 틀린 데이터가 맞는지 확인
+// 3. 정답데이터가 정확한지 확인
+
 type Props = {
   question: string;
   answer: string;

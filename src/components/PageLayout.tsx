@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 import { breakPoints } from '@src/utils/breakpoints';
 import React from 'react';
 
+// TestCase
+// 1. width크기에 따라 레이아웃이 올바르게 변경되는지 확인
+
 type Props = {
   children: React.ReactChild;
 };

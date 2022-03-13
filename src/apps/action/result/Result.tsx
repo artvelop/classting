@@ -8,6 +8,11 @@ import { NoteItemList } from './components/NoteItemList';
 import { ResultChartItem } from './components/ResultChartItem';
 import { useResult } from './Result.hook';
 
+// TestCase
+// 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
+// 2. 홈으로 갈 때 전역state가 올바르게 초기화 되는지 확인
+// 3. 다시풀기 클릭시 question데이터를 제외하고 나머지 전역 state가 올바르게 초기화되는지 확인
+
 export const Result = () => {
   const { handleAgainAnswerToQuestion, handleGoHome } = useResult();
 
