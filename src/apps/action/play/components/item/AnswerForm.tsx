@@ -7,6 +7,12 @@ import { QuestionItemType } from '@type/question.type';
 import { AnswerButton } from './AnswerButton';
 import { answerColor } from '@constants/answerColor';
 
+// TestCase
+// 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
+// 2. AnswerButton 클릭시 데이터가 Type에 맞게 올바르게 담기는지 확인
+// 3. AnswerButton을 클릭 후에 결과화면이 올바르게 나타나는지 확인
+// 4. Next버튼 작동여부 확인
+
 type Props = {
   onClickNextStep: () => void;
   item: QuestionItemType;

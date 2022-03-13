@@ -7,6 +7,11 @@ import { Answer } from '@type/question.type';
 import { useAnswerButton } from './AnswerButton.hook';
 import { answerColor } from '@constants/answerColor';
 
+// TestCase
+// 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
+// 2. 클릭시 disabled처리가 올바르게 되는지 확인
+// 3. disabled에 따라서 ui가 올바르게 변경되는지 확인
+
 type Props = {
   buttonDisable: boolean;
   questionId: string;
