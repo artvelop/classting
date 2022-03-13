@@ -34,7 +34,7 @@ URL : https://classting.vercel.app/
 - component 로직
   - 무조건 bussiness로직은 customhooks로 분리
   - screen컴포넌트를 제외하고 하나의 컴포넌트에는 한 역할만 가져가도록 하기
-  - 렌더링 최적화는 유저에게 눈에 띄는 성능저하가 나타나는 로직에만 고려하기
+  - 렌더링 최적화는 리렌더링시 유저에게 눈에 띄는 성능저하가 나타나는 로직에만 고려하기
 - 변수명 지을 땐
   - camelcase로 작성
   - 줄임말은 최대한 피하기
