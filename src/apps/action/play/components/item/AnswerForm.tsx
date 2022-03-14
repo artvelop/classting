@@ -14,16 +14,16 @@ import { AnswerButton } from './AnswerButton';
 // 5. 렌더링 최적화 이후 deps에 들어갈 값들이 알맞은 값인지 확인
 
 type Props = {
-  onClickNextStep: () => void;
   item: QuestionItemType;
 };
 
-export const AnswerForm = ({ item, onClickNextStep }: Props) => {
+export const AnswerForm = ({ item }: Props) => {
   const {
     buttonDisable,
     handleClickUserAnswer,
     getCorrectStatusResult,
     getCorrectStatusColor,
+    handleClickNextButton,
   } = useAnswerForm({ item });
 
   return (
@@ -33,7 +33,7 @@ export const AnswerForm = ({ item, onClickNextStep }: Props) => {
           <Typography variant="body2" color={getCorrectStatusColor}>
             {getCorrectStatusResult}
           </Typography>
-          <NextButton onClick={onClickNextStep}>NEXT</NextButton>
+          <NextButton onClick={handleClickNextButton}>NEXT</NextButton>
         </ResultContainer>
       )}
       <ButtonContainer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import 'keen-slider/keen-slider.min.css';
-import { useQuestionItemSlider } from './QuestionItemSlider.hook';
+import { useQuestionItemContainer } from './QuestionItemContainer.hook';
 import { QuestionItem } from './QuestionItem';
 
 // TestCase
@@ -10,23 +10,12 @@ import { QuestionItem } from './QuestionItem';
 // 3. 마지막 슬라이더에서 result페이지로 올바르게 넘어가는지 확인
 // 4. 렌더링 최적화 이후 deps에 들어갈 값들이 알맞은 값인지 확인
 
-export const QuestionItemSlider = () => {
-  const { questionItemList, handleNextStep, slideRef } =
-    useQuestionItemSlider();
+export const QuestionItemContainer = () => {
+  const { currentQuestionItem, sequence } = useQuestionItemContainer();
 
   return (
     <Container>
-      <div ref={slideRef} className="keen-slider">
-        {questionItemList.map((item, index) => (
-          <SliderWrapper key={item.id} className="keen-slider__slide">
-            <QuestionItem
-              item={item}
-              sequence={index + 1}
-              onClickNextStep={handleNextStep}
-            />
-          </SliderWrapper>
-        ))}
-      </div>
+      <QuestionItem item={currentQuestionItem} sequence={sequence} />
     </Container>
   );
 };
@@ -35,4 +24,3 @@ const Container = styled.div`
   max-height: 100%;
   max-width: 100%;
 `;
-const SliderWrapper = styled.div``;

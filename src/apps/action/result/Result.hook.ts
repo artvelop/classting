@@ -3,6 +3,7 @@ import { useSetRecoilState } from 'recoil';
 import { questionList } from '@recoil/atom/questionList';
 import { userAnswerList } from '@recoil/atom/userAnswerList';
 import { playStartTime } from '@recoil/atom/playStartTime';
+import moment from 'moment';
 
 export const useResult = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export const useResult = () => {
 
   const handleAgainAnswerToQuestion = () => {
     setUserAnswerList([]);
-    setPlayStartTime(null);
+    setPlayStartTime(moment());
 
     navigate('/action/play');
   };

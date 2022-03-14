@@ -13,10 +13,9 @@ import { QuestionItemType } from '@type/question.type';
 type Props = {
   item: QuestionItemType;
   sequence: number;
-  onClickNextStep: () => void;
 };
 
-export const QuestionItem = ({ item, sequence, onClickNextStep }: Props) => {
+export const QuestionItem = ({ item, sequence }: Props) => {
   return (
     <ContainerLayout>
       <QuestionContainer>
@@ -30,7 +29,7 @@ export const QuestionItem = ({ item, sequence, onClickNextStep }: Props) => {
       <InformationContainer>
         <DifficultyItem level={item.difficulty} />
       </InformationContainer>
-      <AnswerForm item={item} onClickNextStep={onClickNextStep} />
+      <AnswerForm item={item} />
     </ContainerLayout>
   );
 };

@@ -7,6 +7,7 @@
       "@apps/*": ["apps/*"],
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@recoil/*": ["recoil/*"],
