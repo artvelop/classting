@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
 import { themeColor } from '@constants/themeColor';
 import { Typography } from '@mui/material';
-import { useDifficultyItem } from './DifficultyItem.hook';
 
 // TestCase
 // 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
@@ -14,12 +13,18 @@ type Props = {
 };
 
 export const DifficultyItem = ({ level }: Props) => {
-  const { getDifficultyFormatting } = useDifficultyItem({ level });
+  const difficulty = useMemo(
+    () =>
+      Array.from({ length: level })
+        .map(() => '🔥')
+        .join(''),
+    [level],
+  );
 
   return (
     <Container>
       <Typography variant="button" color={themeColor.white}>
-        난이도 {getDifficultyFormatting}
+        난이도 {difficulty}
       </Typography>
     </Container>
   );
