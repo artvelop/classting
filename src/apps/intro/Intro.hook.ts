@@ -8,6 +8,7 @@ const MUSIC_CATEGORY_NUMBER = 12;
 
 export const useIntro = () => {
   const [playModalVisible, setPlayModalVisible] = useState(false);
+  const [loadingVisible, setLoadingVisible] = useState(false);
   const setQuestionList = useSetRecoilState(questionList);
 
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export const useIntro = () => {
 
   const handleClickPlayQuiz = () => setPlayModalVisible(true);
   const handlePlayModalCofirm = async () => {
+    setLoadingVisible(true);
     const list = await questionApi.list({
       amount: 10,
       category: MUSIC_CATEGORY_NUMBER,
@@ -28,6 +30,7 @@ export const useIntro = () => {
       setQuestionList(list);
       navigate('/action/play');
     }
+    setLoadingVisible(false);
   };
 
   return {
@@ -35,5 +38,6 @@ export const useIntro = () => {
     setPlayModalVisible,
     handleClickPlayQuiz,
     handlePlayModalCofirm,
+    loadingVisible,
   };
 };

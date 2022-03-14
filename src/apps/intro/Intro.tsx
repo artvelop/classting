@@ -6,13 +6,13 @@ import { Button, Typography } from '@mui/material';
 import { useIntro } from './Intro.hook';
 import { MessageModal } from '@components/MessageModal';
 import { GiArchiveRegister } from 'react-icons/gi';
+import { LoadingIndicator } from '@components/LoadingIndicator';
 
 // TestCase
 // 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
 // 2. 초기 렌더링 이후 questionList 전역 상태관리 초기화 여부 확인
 // 3. handlePlayModalCofirm 함수에서 api로 받아온 데이터가 올바르게 매핑되는지 확인
 // 4. handlePlayModalCofirm 함수에서 데이터 매핑시 정답이 랜덤으로 올바르게 array에 배치되는지 확인
-// 5. handlePlayModalCofirm 예외처리 되어있는지 확인
 
 export const Intro = () => {
   const {
@@ -20,6 +20,7 @@ export const Intro = () => {
     setPlayModalVisible,
     handleClickPlayQuiz,
     handlePlayModalCofirm,
+    loadingVisible,
   } = useIntro();
 
   return (
@@ -47,6 +48,7 @@ export const Intro = () => {
           description="퀴즈는 4지선다형으로 구성되며 총 10문제 입니다"
           icon={<GiArchiveRegister size="128" color={themeColor.gray} />}
         />
+        <LoadingIndicator visible={loadingVisible} />
       </Container>
     </PageLayout>
   );
