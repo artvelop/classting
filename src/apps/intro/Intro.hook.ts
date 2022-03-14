@@ -7,6 +7,7 @@ import { playStartTime } from '@recoil/atom/playStartTime';
 import moment from 'moment';
 
 const MUSIC_CATEGORY_NUMBER = 12;
+const TOTAL_QUESTION_COUNT = 10;
 
 export const useIntro = () => {
   const [playModalVisible, setPlayModalVisible] = useState(false);
@@ -24,7 +25,7 @@ export const useIntro = () => {
   const handlePlayModalCofirm = async () => {
     setLoadingVisible(true);
     const list = await questionApi.list({
-      amount: 10,
+      amount: TOTAL_QUESTION_COUNT,
       category: MUSIC_CATEGORY_NUMBER,
       type: 'multiple',
     });

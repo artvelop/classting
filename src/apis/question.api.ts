@@ -32,7 +32,11 @@ export const questionApi = {
             }),
           );
 
-          answerList.splice(getRandomNumber(0, 3), 0, correctAnswer);
+          answerList.splice(
+            getRandomNumber({ min: 0, max: 3 }),
+            0,
+            correctAnswer,
+          );
 
           return {
             id: generateUUID(),
