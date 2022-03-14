@@ -11,11 +11,11 @@ import { QuestionItem } from './QuestionItem';
 // 4. 렌더링 최적화 이후 deps에 들어갈 값들이 알맞은 값인지 확인
 
 export const QuestionItemContainer = () => {
-  const { currentQuestionItem, sequence } = useQuestionItemContainer();
+  const { currentQuestionItem } = useQuestionItemContainer();
 
   return (
     <Container>
-      <QuestionItem item={currentQuestionItem} sequence={sequence} />
+      <QuestionItem item={currentQuestionItem} />
     </Container>
   );
 };

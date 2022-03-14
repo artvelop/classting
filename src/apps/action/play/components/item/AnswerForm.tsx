@@ -23,7 +23,7 @@ export const AnswerForm = ({ item }: Props) => {
     handleClickUserAnswer,
     getCorrectStatusResult,
     getCorrectStatusColor,
-    handleClickNextButton,
+    nextStep,
   } = useAnswerForm({ item });
 
   return (
@@ -33,7 +33,7 @@ export const AnswerForm = ({ item }: Props) => {
           <Typography variant="body2" color={getCorrectStatusColor}>
             {getCorrectStatusResult}
           </Typography>
-          <NextButton onClick={handleClickNextButton}>NEXT</NextButton>
+          <NextButton onClick={nextStep}>NEXT</NextButton>
         </ResultContainer>
       )}
       <ButtonContainer>

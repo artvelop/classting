@@ -1,19 +1,27 @@
 import { answerColor } from '@constants/answerColor';
 import { useStep } from '@hooks/useStep';
-import { userAnswerList } from '@recoil/atom/userAnswerList';
+import { userAnswerList as userRecoilAnswerList } from '@recoil/atom/userAnswerList';
 import { Answer, QuestionItemType } from '@type/question.type';
 import { useCallback, useMemo, useState } from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 
 type Params = {
   item: QuestionItemType;
 };
 
 export const useAnswerForm = ({ item }: Params) => {
-  const [buttonDisable, setButtonDisable] = useState(false);
-  const [correctStatus, setCorrectStatus] = useState(false);
-  const setUserAnswerList = useSetRecoilState(userAnswerList);
-  const { nextStep } = useStep();
+  const [userAnswerList, setUserAnswerList] =
+    useRecoilState(userRecoilAnswerList);
+  const { nextStep, step, sequence } = useStep();
+
+  const buttonDisable = sequence === userAnswerList.length;
+  const correctStatus = useMemo(
+    () =>
+      userAnswerList.length === sequence
+        ? userAnswerList[step].userAnswer.correctStatus
+        : false,
+    [userAnswerList, step],
+  );
 
   const getCorrectStatusResult = useMemo(
     () => (correctStatus ? '정답 😀' : '오답 😢'),
@@ -40,23 +48,13 @@ export const useAnswerForm = ({ item }: Params) => {
           correctAnswer,
         },
       ]);
-
-      setCorrectStatus(answerItem.correctStatus);
-
-      setButtonDisable((cur) => !cur);
     },
-    [item, correctStatus, buttonDisable],
+    [item, correctStatus],
   );
-
-  const handleClickNextButton = () => {
-    setCorrectStatus(false);
-    setButtonDisable(false);
-    nextStep();
-  };
 
   return {
     buttonDisable,
-    handleClickNextButton,
+    nextStep,
     handleClickUserAnswer,
     getCorrectStatusResult,
     getCorrectStatusColor,

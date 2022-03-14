@@ -5,6 +5,7 @@ import { themeColor } from '@constants/themeColor';
 import { DifficultyItem } from '@components/DifficultyItem';
 import { AnswerForm } from './item/AnswerForm';
 import { QuestionItemType } from '@type/question.type';
+import { useStep } from '@hooks/useStep';
 
 // TestCase
 // 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
@@ -12,10 +13,11 @@ import { QuestionItemType } from '@type/question.type';
 
 type Props = {
   item: QuestionItemType;
-  sequence: number;
 };
 
-export const QuestionItem = ({ item, sequence }: Props) => {
+export const QuestionItem = ({ item }: Props) => {
+  const { sequence } = useStep();
+
   return (
     <ContainerLayout>
       <QuestionContainer>
