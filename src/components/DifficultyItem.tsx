@@ -23,7 +23,7 @@ export const DifficultyItem = ({ level }: Props) => {
 
   return (
     <Container>
-      <Typography variant="button" color={themeColor.white}>
+      <Typography role="contentinfo" variant="button" color={themeColor.white}>
         난이도 {difficulty}
       </Typography>
     </Container>
