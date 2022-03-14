@@ -1,9 +1,9 @@
+import { useCallback, useMemo } from 'react';
+import { useRecoilState } from 'recoil';
 import { answerColor } from '@constants/answerColor';
 import { useStep } from '@hooks/useStep';
 import { userAnswerList as userRecoilAnswerList } from '@recoil/atom/userAnswerList';
 import { Answer, QuestionItemType } from '@type/question.type';
-import { useCallback, useMemo, useState } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
 
 type Params = {
   item: QuestionItemType;
