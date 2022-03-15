@@ -1,12 +1,7 @@
 import { userAnswerList as userRecoilAnswerList } from '@recoil/atom/userAnswerList';
+import { QuestionCommentary } from '@type/question.type';
 import { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-
-type QuestionCommentary = {
-  questionId: string;
-  question: string;
-  answer: string;
-};
 
 export const useNoteItemList = () => {
   const [noteList, setNoteList] = useState<Array<QuestionCommentary>>([]);
@@ -31,5 +26,6 @@ export const useNoteItemList = () => {
 
   return {
     noteList,
+    noteAnswerInit,
   };
 };

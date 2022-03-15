@@ -2,11 +2,11 @@ import { useEffect } from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { v4 as generateUUID } from 'uuid';
 import { UserAnswerType } from '@type/userAnswer.type';
-import { useResultChart } from './ResultChartItem.hook';
 import { useSetRecoilState } from 'recoil';
 import { userAnswerList as userRecoilAnswerList } from '@recoil/atom/userAnswerList';
-import { answerColor } from '@constants/answerColor';
+import { useNoteItemList } from './NoteItemList.hook';
 import { testRenderHookWrapper } from '@utils/testRenderHookWrapper';
+import { act } from 'react-dom/test-utils';
 
 const CORRECT_ANSWER_COUNT = 7;
 const WRONG_ANSWER_COUNT = 3;
@@ -46,8 +46,8 @@ const userAnswerList: Array<UserAnswerType> = [
   ...userWrongAnswerList,
 ];
 
-describe('Chart Data Hooks Test', () => {
-  it('차트 데이터가 알맞게 나왔는지 테스트', () => {
+describe('NoteItemList Hook Test', () => {
+  it('틀린 정답갯수만큼 오답노트 리스트가 나타나는지 체크', () => {
     const { result } = renderHook(
       () => {
         const setUserAnswerList = useSetRecoilState(userRecoilAnswerList);
@@ -56,24 +56,15 @@ describe('Chart Data Hooks Test', () => {
           setUserAnswerList(userAnswerList);
         }, [setUserAnswerList]);
 
-        return useResultChart();
+        return useNoteItemList();
       },
       {
         wrapper: testRenderHookWrapper,
       },
     );
 
-    expect(result.current.getChartData()).toEqual({
-      labels: ['정답', '오답'],
-      datasets: [
-        {
-          label: '풀이 결과',
-          data: [CORRECT_ANSWER_COUNT, WRONG_ANSWER_COUNT],
-          backgroundColor: [answerColor.correct, answerColor.wrong],
-          borderColor: [answerColor.correct, answerColor.wrong],
-          borderWidth: 1,
-        },
-      ],
-    });
+    act(() => result.current.noteAnswerInit());
+
+    expect(result.current.noteList.length).toEqual(WRONG_ANSWER_COUNT);
   });
 });
