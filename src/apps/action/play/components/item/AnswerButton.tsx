@@ -33,6 +33,7 @@ export const AnswerButton = ({
 
   return (
     <AnswerButtonContainer
+      role="contentinfo"
       fullWidth
       variant="contained"
       onClick={onClickUserAnswer}
@@ -40,9 +41,17 @@ export const AnswerButton = ({
       <div>{answerItem.content}</div>
       {buttonDisable &&
         (answerItem.correctStatus ? (
-          <AiOutlineCheckCircle size="20" color={answerColor.correct} />
+          <AiOutlineCheckCircle
+            role="correct-icon"
+            size="20"
+            color={answerColor.correct}
+          />
         ) : (
-          <AiOutlineCloseCircle size="20" color={answerColor.wrong} />
+          <AiOutlineCloseCircle
+            role="wrong-icon"
+            size="20"
+            color={answerColor.wrong}
+          />
         ))}
     </AnswerButtonContainer>
   );
