@@ -12,6 +12,7 @@
       "@constants/*": ["constants/*"],
       "@recoil/*": ["recoil/*"],
       "@type/*": ["type/*"],
+      "@dummy/*": ["dummy/*"],
       "@src/*": ["./*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],

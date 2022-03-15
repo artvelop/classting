@@ -10,6 +10,7 @@ URL : https://classting.vercel.app/
 - CRA
 - react v17.0.2
 - typescript v4.6.2
+- jest
 - prettier
 - vercel
 
@@ -20,6 +21,8 @@ URL : https://classting.vercel.app/
   - apps -> 각 페이지에 쓰이는 컴포넌트들 및 로직들
   - components -> 공용으로 쓰이는 컴포넌트들
   - constants -> 전역으로 쓰이는 상수들
+  - dummy -> 테스트용 더미데이터
+  - hooks -> 공용으로 쓰이는 커스텀훅
   - pages -> 페이지를 명시해주는 컴포넌트 (안에 로직들은 apps폴더로 분리)
   - recoil -> 전역상태관리로 쓰이는 store
   - type -> 전역으로 쓰이는 type들

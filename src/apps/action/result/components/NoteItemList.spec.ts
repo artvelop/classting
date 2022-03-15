@@ -1,50 +1,14 @@
 import { useEffect } from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import { v4 as generateUUID } from 'uuid';
-import { UserAnswerType } from '@type/userAnswer.type';
 import { useSetRecoilState } from 'recoil';
 import { userAnswerList as userRecoilAnswerList } from '@recoil/atom/userAnswerList';
 import { useNoteItemList } from './NoteItemList.hook';
 import { testRenderHookWrapper } from '@utils/testRenderHookWrapper';
 import { act } from 'react-dom/test-utils';
-
-const CORRECT_ANSWER_COUNT = 7;
-const WRONG_ANSWER_COUNT = 3;
-
-const userCorrectAnswer = {
-  id: generateUUID(),
-  content: '정답1',
-  correctStatus: true,
-};
-
-const userWrongAnswer = {
-  id: generateUUID(),
-  content: '정답1',
-  correctStatus: false,
-};
-
-const userCorrectAnswerList: Array<UserAnswerType> = Array.from({
-  length: CORRECT_ANSWER_COUNT,
-}).map(() => ({
-  questionId: generateUUID(),
-  question: '문제1 질문',
-  userAnswer: userCorrectAnswer,
-  correctAnswer: userCorrectAnswer,
-}));
-
-const userWrongAnswerList: Array<UserAnswerType> = Array.from({
-  length: WRONG_ANSWER_COUNT,
-}).map(() => ({
-  questionId: generateUUID(),
-  question: '문제1 질문',
-  userAnswer: userWrongAnswer,
-  correctAnswer: userCorrectAnswer,
-}));
-
-const userAnswerList: Array<UserAnswerType> = [
-  ...userCorrectAnswerList,
-  ...userWrongAnswerList,
-];
+import {
+  DUMMY_WRONG_ANSWER_COUNT,
+  userDummyAnswerList,
+} from '@dummy/userAnswerList.dummy';
 
 describe('NoteItemList Hook Test', () => {
   it('틀린 정답갯수와 오답노트 리스트 갯수가 같은지 체크', () => {
@@ -53,7 +17,7 @@ describe('NoteItemList Hook Test', () => {
         const setUserAnswerList = useSetRecoilState(userRecoilAnswerList);
 
         useEffect(() => {
-          setUserAnswerList(userAnswerList);
+          setUserAnswerList(userDummyAnswerList);
         }, [setUserAnswerList]);
 
         return useNoteItemList();
@@ -65,6 +29,6 @@ describe('NoteItemList Hook Test', () => {
 
     act(() => result.current.noteAnswerInit());
 
-    expect(result.current.noteList.length).toEqual(WRONG_ANSWER_COUNT);
+    expect(result.current.noteList.length).toEqual(DUMMY_WRONG_ANSWER_COUNT);
   });
 });
