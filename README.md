@@ -52,6 +52,7 @@ URL : https://classting.vercel.app/
 
 - 한번더 UI, 기능체크
 - 유저의 기본적인 Flow 이외의 상호작용에도 기능 및 state가 제대로 관리되는지 확인
+- testcode 작성
 
 ## 주요 사용 라이브러리
 
