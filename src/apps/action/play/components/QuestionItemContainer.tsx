@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import 'keen-slider/keen-slider.min.css';
 import { useQuestionItemContainer } from './QuestionItemContainer.hook';
 import { QuestionItem } from './QuestionItem';
 
