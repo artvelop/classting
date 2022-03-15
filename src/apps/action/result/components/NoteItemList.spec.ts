@@ -47,7 +47,7 @@ const userAnswerList: Array<UserAnswerType> = [
 ];
 
 describe('NoteItemList Hook Test', () => {
-  it('틀린 정답갯수만큼 오답노트 리스트가 나타나는지 체크', () => {
+  it('틀린 정답갯수와 오답노트 리스트 갯수가 같은지 체크', () => {
     const { result } = renderHook(
       () => {
         const setUserAnswerList = useSetRecoilState(userRecoilAnswerList);

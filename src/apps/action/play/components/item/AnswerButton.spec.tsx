@@ -4,7 +4,7 @@ import { v4 as generateUUID } from 'uuid';
 import { AnswerButton } from './AnswerButton';
 import { Answer } from '@type/question.type';
 
-describe('UI Cover', () => {
+describe('UI Render Check', () => {
   const defaultProps = {
     buttonDisable: true,
     questionId: generateUUID(),
@@ -16,7 +16,7 @@ describe('UI Cover', () => {
     handleClickUserAnswer: (questionId: string, answerItem: Answer) => {},
   };
 
-  it('버튼 정답 내용 테스트', () => {
+  it('해당 버튼이 정답일 때 Render 결과가 올바른지 테스트', () => {
     defaultProps.buttonDisable = true;
     defaultProps.answerItem.correctStatus = true;
     render(<AnswerButton {...defaultProps} />);
@@ -25,7 +25,7 @@ describe('UI Cover', () => {
     expect(screen.getByRole('correct-icon'));
   });
 
-  it('버튼 오답 내용 테스트', () => {
+  it('해당 버튼이 오답일 때 Render 결과가 올바른지 테스트', () => {
     defaultProps.buttonDisable = true;
     defaultProps.answerItem.correctStatus = false;
     render(<AnswerButton {...defaultProps} />);

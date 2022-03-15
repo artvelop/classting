@@ -47,7 +47,7 @@ const userAnswerList: Array<UserAnswerType> = [
 ];
 
 describe('Chart Data Hooks Test', () => {
-  it('차트 데이터가 알맞게 나왔는지 테스트', () => {
+  it('useResultChart 함수를 통해 데이터가 알맞게 치환되는지 테스트', () => {
     const { result } = renderHook(
       () => {
         const setUserAnswerList = useSetRecoilState(userRecoilAnswerList);
