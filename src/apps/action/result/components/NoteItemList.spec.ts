@@ -27,7 +27,7 @@ describe('NoteItemList Hook Test', () => {
       },
     );
 
-    act(() => result.current.noteAnswerInit());
+    act(() => result.current.noteAnswerListInit());
 
     expect(result.current.noteList.length).toEqual(DUMMY_WRONG_ANSWER_COUNT);
   });

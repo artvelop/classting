@@ -9,10 +9,10 @@ export const useNoteItemList = () => {
   const userAnswerList = useRecoilValue(userRecoilAnswerList);
 
   useEffect(() => {
-    noteAnswerInit();
+    noteAnswerListInit();
   }, []);
 
-  const noteAnswerInit = () => {
+  const noteAnswerListInit = () => {
     const list = userAnswerList
       .filter(({ userAnswer }) => !userAnswer.correctStatus)
       .map(({ questionId, question, correctAnswer }) => ({
@@ -26,6 +26,6 @@ export const useNoteItemList = () => {
 
   return {
     noteList,
-    noteAnswerInit,
+    noteAnswerListInit,
   };
 };
