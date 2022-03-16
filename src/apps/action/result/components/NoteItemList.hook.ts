@@ -5,7 +5,6 @@ import { useRecoilValue } from 'recoil';
 
 export const useNoteItemList = () => {
   const [noteList, setNoteList] = useState<Array<QuestionCommentary>>([]);
-
   const userAnswerList = useRecoilValue(userRecoilAnswerList);
 
   useEffect(() => {
