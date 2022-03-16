@@ -9,6 +9,12 @@ import { themeColor } from '@constants/themeColor';
 // 2. 메세지 모달이 root div 바깥으로 나오는지 확인
 // 3. 불필요한 로직이 있는지 확인
 
+export const role = {
+  messageModal: 'message-modal',
+  confrimButton: 'message-modal-confrim-button',
+  cancelButton: 'message-modal-cancel-button',
+};
+
 export type Props = {
   visible: boolean;
   setVisible: (visible: boolean) => void;
@@ -22,7 +28,7 @@ export const MessageModal = (props: Props) => {
   const { visible, handleClose, handleConfirmClick } = useMessageModal(props);
 
   return (
-    <Modal open={visible} onClose={handleClose}>
+    <Modal role={role.messageModal} open={visible} onClose={handleClose}>
       <Container>
         <IconWrapper>{props.icon}</IconWrapper>
         <DescriptionWrapper>
@@ -31,11 +37,13 @@ export const MessageModal = (props: Props) => {
           </Description>
         </DescriptionWrapper>
         <ButtonWrapper>
-          <ConfirmButton onClick={handleConfirmClick}>
+          <ConfirmButton role={role.confrimButton} onClick={handleConfirmClick}>
             네 알겠습니다
           </ConfirmButton>
           {props.cancleButtonVisible && (
-            <CancelButton onClick={handleClose}>다시 돌아갈래요</CancelButton>
+            <CancelButton role={role.cancelButton} onClick={handleClose}>
+              다시 돌아갈래요
+            </CancelButton>
           )}
         </ButtonWrapper>
       </Container>
