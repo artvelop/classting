@@ -1,7 +1,8 @@
+import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { v4 as generateUUID } from 'uuid';
-import { AnswerForm } from './AnswerForm';
+import { AnswerForm, role } from './AnswerForm';
 import { testRenderHookWrapper } from '@utils/testRenderHookWrapper';
 import { RecoilRoot } from 'recoil';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -41,8 +42,8 @@ describe('UI Render Check', () => {
 
     screen.getByText('정답 문항').click();
 
-    expect(screen.getByRole('result-container'));
-    expect(screen.getByRole('result-text').textContent).toBe('정답 😀');
+    expect(screen.getByRole(role.resultContainer)).toBeInTheDocument();
+    expect(screen.getByRole(role.resultContent).textContent).toBe('정답 😀');
 
     screen.getByRole('next-step-button').click();
   });
@@ -61,8 +62,8 @@ describe('UI Render Check', () => {
 
     screen.getByText('오답 문항 0').click();
 
-    expect(screen.getByRole('result-container'));
-    expect(screen.getByRole('result-text').textContent).toBe('오답 😢');
+    expect(screen.getByRole(role.resultContainer)).toBeInTheDocument();
+    expect(screen.getByRole(role.resultContent).textContent).toBe('오답 😢');
 
     screen.getByRole('next-step-button').click();
   });
@@ -79,6 +80,6 @@ describe('UI Render Check', () => {
       },
     );
 
-    expect(screen.queryByRole('result-container')).toBe(null);
+    expect(screen.queryByRole(role.resultContainer)).not.toBeInTheDocument();
   });
 });

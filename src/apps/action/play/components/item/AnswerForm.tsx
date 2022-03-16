@@ -13,6 +13,12 @@ import { AnswerButton } from './AnswerButton';
 // 4. Next버튼 작동여부 확인
 // 5. 렌더링 최적화 이후 deps에 들어갈 값들이 알맞은 값인지 확인
 
+export const role = {
+  resultContainer: 'result-container',
+  nextButton: 'next-step-button',
+  resultContent: 'result-content',
+};
+
 type Props = {
   item: QuestionItemType;
 };
@@ -29,14 +35,14 @@ export const AnswerForm = ({ item }: Props) => {
   return (
     <Container>
       {buttonDisable && (
-        <ResultContainer role="result-container">
+        <ResultContainer role={role.resultContainer}>
           <Typography
-            role="result-text"
+            role={role.resultContent}
             variant="body2"
             color={getCorrectStatusColor}>
             {getCorrectStatusResult}
           </Typography>
-          <NextButton role="next-step-button" onClick={nextStep}>
+          <NextButton role={role.nextButton} onClick={nextStep}>
             NEXT
           </NextButton>
         </ResultContainer>

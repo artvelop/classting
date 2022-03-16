@@ -12,6 +12,12 @@ import { answerColor } from '@constants/answerColor';
 // 2. 클릭시 disabled처리가 올바르게 되는지 확인
 // 3. disabled에 따라서 ui가 올바르게 변경되는지 확인
 
+export const role = {
+  answerButtonContainer: 'answer-button-container',
+  correctIcon: 'correct-icon',
+  wrongIcon: 'wrong-icon',
+};
+
 type Props = {
   buttonDisable: boolean;
   questionId: string;
@@ -33,7 +39,7 @@ export const AnswerButton = ({
 
   return (
     <AnswerButtonContainer
-      role="contentinfo"
+      role={role.answerButtonContainer}
       fullWidth
       variant="contained"
       onClick={onClickUserAnswer}
@@ -42,13 +48,13 @@ export const AnswerButton = ({
       {buttonDisable &&
         (answerItem.correctStatus ? (
           <AiOutlineCheckCircle
-            role="correct-icon"
+            role={role.correctIcon}
             size="20"
             color={answerColor.correct}
           />
         ) : (
           <AiOutlineCloseCircle
-            role="wrong-icon"
+            role={role.wrongIcon}
             size="20"
             color={answerColor.wrong}
           />

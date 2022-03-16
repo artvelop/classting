@@ -1,7 +1,8 @@
+import '@testing-library/jest-dom';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { v4 as generateUUID } from 'uuid';
-import { AnswerButton } from './AnswerButton';
+import { AnswerButton, role } from './AnswerButton';
 import { Answer } from '@type/question.type';
 
 describe('UI Render Check', () => {
@@ -21,8 +22,10 @@ describe('UI Render Check', () => {
     defaultProps.answerItem.correctStatus = true;
     render(<AnswerButton {...defaultProps} />);
 
-    expect(screen.getByRole('contentinfo').textContent).toBe('문항 내용');
-    expect(screen.getByRole('correct-icon'));
+    expect(screen.getByRole(role.answerButtonContainer).textContent).toBe(
+      '문항 내용',
+    );
+    expect(screen.getByRole(role.correctIcon)).toBeInTheDocument();
   });
 
   it('해당 버튼이 오답일 때 Render 결과가 올바른지 테스트', () => {
@@ -30,7 +33,9 @@ describe('UI Render Check', () => {
     defaultProps.answerItem.correctStatus = false;
     render(<AnswerButton {...defaultProps} />);
 
-    expect(screen.getByRole('contentinfo').textContent).toBe('문항 내용');
-    expect(screen.getByRole('wrong-icon'));
+    expect(screen.getByRole(role.answerButtonContainer).textContent).toBe(
+      '문항 내용',
+    );
+    expect(screen.getByRole(role.wrongIcon)).toBeInTheDocument();
   });
 });

@@ -8,6 +8,10 @@ import { Typography } from '@mui/material';
 // 2. 데이터에 따라 텍스트가 올바르게 표기되는지 확인
 // 3. 컴포넌트 구조상 useMemo사용이 적절할지 확인
 
+export const role = {
+  difficultyContent: 'contentinfo',
+};
+
 type Props = {
   level: number;
 };
@@ -23,7 +27,10 @@ export const DifficultyItem = ({ level }: Props) => {
 
   return (
     <Container>
-      <Typography role="contentinfo" variant="button" color={themeColor.white}>
+      <Typography
+        role={role.difficultyContent}
+        variant="button"
+        color={themeColor.white}>
         난이도 {difficulty}
       </Typography>
     </Container>
