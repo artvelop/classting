@@ -1,6 +1,6 @@
 import React from 'react';
 import { PageLayout } from '@components/PageLayout';
-import { QuestionItemContainer } from './components/QuestionItemContainer';
+import { QuestionItem } from './components/QuestionItem';
 
 // TestCase
 // 1. 새로고침시에 시작시간 초기화 여부 확인
@@ -9,7 +9,7 @@ import { QuestionItemContainer } from './components/QuestionItemContainer';
 export const Play = () => {
   return (
     <PageLayout>
-      <QuestionItemContainer />
+      <QuestionItem />
     </PageLayout>
   );
 };

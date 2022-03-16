@@ -4,19 +4,14 @@ import { Typography } from '@mui/material';
 import { themeColor } from '@constants/themeColor';
 import { DifficultyItem } from '@components/DifficultyItem';
 import { AnswerForm } from './item/AnswerForm';
-import { QuestionItemType } from '@type/question.type';
-import { useStep } from '@hooks/useStep';
+import { useQuestionItem } from './QuestionItem.hook';
 
 // TestCase
 // 1. pc환경과 모바일환경에서 ui가 자연스럽게 나타나는지 확인
 // 2. data가 백엔드에서 넘겨준 response데이터와 동일하게 view로직에 나타나는지 확인
 
-type Props = {
-  item: QuestionItemType;
-};
-
-export const QuestionItem = ({ item }: Props) => {
-  const { sequence } = useStep();
+export const QuestionItem = () => {
+  const { item, sequence } = useQuestionItem();
 
   return (
     <ContainerLayout>
