@@ -29,11 +29,16 @@ export const AnswerForm = ({ item }: Props) => {
   return (
     <Container>
       {buttonDisable && (
-        <ResultContainer>
-          <Typography variant="body2" color={getCorrectStatusColor}>
+        <ResultContainer role="result-container">
+          <Typography
+            role="result-text"
+            variant="body2"
+            color={getCorrectStatusColor}>
             {getCorrectStatusResult}
           </Typography>
-          <NextButton onClick={nextStep}>NEXT</NextButton>
+          <NextButton role="next-step-button" onClick={nextStep}>
+            NEXT
+          </NextButton>
         </ResultContainer>
       )}
       <ButtonContainer>
