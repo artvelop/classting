@@ -3,8 +3,7 @@ import { questionApi } from '@apis/question.api';
 import { useSetRecoilState } from 'recoil';
 import { questionList } from '@recoil/atom/questionList';
 import { useNavigate } from 'react-router-dom';
-import { playStartTime } from '@recoil/atom/playStartTime';
-import moment from 'moment';
+import { usePlayReset } from '@hooks/usePlayReset';
 
 const MUSIC_CATEGORY_NUMBER = 12;
 const TOTAL_QUESTION_COUNT = 10;
@@ -13,7 +12,7 @@ export const useIntro = () => {
   const [playModalVisible, setPlayModalVisible] = useState(false);
   const [loadingVisible, setLoadingVisible] = useState(false);
   const setQuestionList = useSetRecoilState(questionList);
-  const setPlayStartTime = useSetRecoilState(playStartTime);
+  const { resetPlay } = usePlayReset();
 
   const navigate = useNavigate();
 
@@ -35,7 +34,7 @@ export const useIntro = () => {
       navigate('/action/play');
     }
 
-    setPlayStartTime(moment());
+    resetPlay();
     setLoadingVisible(false);
   };
 
